@@ -57,4 +57,17 @@ describe("Library Management System", () => {
     const books = library.getAvailableBooks();
     expect(books.length).toBe(0);
   });
+
+  it("should not return a book that hasn't been borrowed", () => {
+    library.addBook({
+      isbn: "9780593080005",
+      title: "Atomic Habits",
+      author: "James Clear",
+      genre: "Self-Help",
+      year: 2018,
+    });
+
+    const returned = library.returnBook("9780593080005");
+    expect(returned).toBe(false);
+  });
 });

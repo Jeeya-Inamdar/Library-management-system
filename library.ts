@@ -26,4 +26,13 @@ export class Library {
   getAvailableBooks(): Book[] {
     return this.books.filter((book) => !book.isBorrowed);
   }
+
+  returnBook(isbn: string): boolean {
+    const book = this.books.find((book) => book.isbn === isbn);
+    if (book && book.isBorrowed) {
+      book.isBorrowed = false;
+      return true;
+    }
+    return false;
+  }
 }
