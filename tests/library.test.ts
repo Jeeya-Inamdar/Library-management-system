@@ -41,4 +41,20 @@ describe("Library Management System", () => {
     expect(books.length).toBe(4);
     expect(books[0].isbn).toBe("9780143127741");
   });
+
+  it("should allow borrowing a book if available", () => {
+    library.addBook({
+      isbn: "9780143127741",
+      title: "The Mindset",
+      author: "Carol S. Dweck",
+      genre: "Self-Help",
+      year: 2006,
+    });
+
+    const borrow = library.borrowBook("9780143127741");
+    expect(borrow).toBe(true);
+
+    const books = library.getAvailableBooks();
+    expect(books.length).toBe(0);
+  });
 });
