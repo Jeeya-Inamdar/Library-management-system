@@ -35,4 +35,8 @@ export class Library {
     }
     return false;
   }
+
+  getAllBooks(): Book[] {
+    return this.books;
+  }
 }
